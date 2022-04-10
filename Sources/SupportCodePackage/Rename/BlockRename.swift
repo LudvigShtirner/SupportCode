@@ -5,6 +5,8 @@
 //  Created by Алексей Филиппов on 27.12.2020.
 //
 
+import Foundation
+
 /// Пустой блок
 public typealias VoidBlock = () -> Void
 /// Блок с флагом
