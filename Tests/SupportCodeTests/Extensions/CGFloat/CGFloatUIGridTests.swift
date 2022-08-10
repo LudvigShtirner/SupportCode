@@ -2,50 +2,37 @@
 //  CGFloatUIGridTests.swift
 //  SupportCodeTests
 //
-//  Created by Алексей Филиппов on 04.09.2021.
+//  Created by Филиппов Алексей on 11.05.2022.
 //
 
-// Apple
 import XCTest
 
-final class CGFloatUIGridTests: XCTestCase {
-    // MARK: - Overrides
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-    }
-    
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-    
+class CGFloatUIGridTests: XCTestCase {
     // MARK: - Tests
-    func testThatConvertTo2xCorrectlyWhenNoAfterDotPart() {
+    func testThatValueCut() {
         // Given
-        let sourceValue: CGFloat = 6.0
-        let screenScale: CGFloat = 2.0
+        let value = CGFloat(5.2)
         // When
-        let finalValue = sourceValue.convertToScreenGrid(scale: screenScale)
+        let result = value.toPixelGrid(scale: 2.0)
         // Then
-        XCTAssertEqual(finalValue, 6.0)
+        XCTAssertEqual(result, 5.0)
     }
     
-    func testThatConvertTo2xCorrectlyWhenHasAfterDotPartToBigger() {
+    func testThatValueExpanded() {
         // Given
-        let sourceValue: CGFloat = 4.8
-        let screenScale: CGFloat = 2.0
+        let value = CGFloat(5.2)
         // When
-        let finalValue = sourceValue.convertToScreenGrid(scale: screenScale)
+        let result = value.toPixelGrid(scale: 3.0)
         // Then
-        XCTAssertEqual(finalValue, 5.0)
+        XCTAssertEqual(result, 16.0 / 3.0)
     }
     
-    func testThatConvertTo2xCorrectlyWhenHasAfterDotPartToLess() {
+    func testThatValueWasNotChanged() {
         // Given
-        let sourceValue: CGFloat = 4.6
-        let screenScale: CGFloat = 2.0
+        let value = CGFloat(5.2)
         // When
-        let finalValue = sourceValue.convertToScreenGrid(scale: screenScale)
+        let result = value.toPixelGrid(scale: 5.0)
         // Then
-        XCTAssertEqual(finalValue, 4.5)
+        XCTAssertEqual(result, 5.2)
     }
 }
