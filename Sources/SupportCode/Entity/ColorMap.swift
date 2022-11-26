@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ColorMap.swift
 //  
 //
 //  Created by Алексей Филиппов on 04.08.2022.
