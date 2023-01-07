@@ -6,7 +6,7 @@
 //
 
 /// Протокол переиспользуемого объекта
-public protocol Identifiable: AnyObject {
+public protocol Identifiable {
     /// Идентификатор переиспользования объекта
     static var identifier: String { get }
 }
