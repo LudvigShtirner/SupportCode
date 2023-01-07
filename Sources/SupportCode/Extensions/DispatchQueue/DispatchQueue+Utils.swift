@@ -22,4 +22,11 @@ public extension DispatchQueue {
             closure()
         }
     }
+    
+    static func callOnMainQueueWithDelay(_ delay: TimeInterval,
+                                         closure: @escaping VoidBlock) {
+      let when = DispatchTime.now() + delay
+      DispatchQueue.main.asyncAfter(deadline: when,
+                                    execute: closure)
+    }
 }
