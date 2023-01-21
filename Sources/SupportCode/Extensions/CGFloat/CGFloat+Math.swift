@@ -10,9 +10,7 @@ import CoreGraphics
 /// Расширение для подсчетов с CGFloat
 public extension CGFloat {
     /// Половина от числа
-    var half: CGFloat {
-        self / 2.0
-    }
+    var half: CGFloat { self / 2.0 }
     /// Перевести число из градусов в радианы
     /// - Returns: число в радианах
     func toRadians() -> CGFloat {
