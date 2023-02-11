@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Sequence {
+public extension Sequence {
     /// Сортирует элементы используя KeyPath
     /// - Parameter keyPath: keyPath по которому необходимо отсортировать элементы
     func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>) -> [Element] {

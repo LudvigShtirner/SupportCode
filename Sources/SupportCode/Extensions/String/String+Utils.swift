@@ -40,8 +40,8 @@ public extension String {
     
     /// Obtain characters in range
     subscript (range: Range<Int>) -> String {
-        @Restricted(0 ... length) var lowerValue = range.lowerBound
-        @Restricted(0 ... length) var upperValue = range.upperBound
+        let lowerValue = range.lowerBound.inRange(min: .zero, max: length)
+        let upperValue = range.upperBound.inRange(min: .zero, max: length)
         let closedRange = lowerValue ..< upperValue
         let start = index(startIndex, offsetBy: closedRange.lowerBound)
         let end = index(start, offsetBy: closedRange.upperBound - closedRange.lowerBound)

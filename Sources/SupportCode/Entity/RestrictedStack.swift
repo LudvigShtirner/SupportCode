@@ -5,6 +5,7 @@
 //  Created by Алексей Филиппов on 16.01.2023.
 //
 
+// Apple
 import Foundation
 
 public struct RestrictedStack<T> {

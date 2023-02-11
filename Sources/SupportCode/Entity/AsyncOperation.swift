@@ -11,16 +11,19 @@ import Foundation
 /**
  Basic async operation
  
- Базовая асинхронная операция
- 
  > Important:
  Detach new thread while executed.
- 
- Создает новый поток при вызове
  
  > Warning:
  You must call completeOperation at end
  
+ - RU:
+ 
+ Базовая асинхронная операция
+ > Important:
+ Создает новый поток при вызове
+ 
+ > Warning:
  Обязательно вызвать completeOperation по завершению операции
  
  --------------------------------Code--------------------------------

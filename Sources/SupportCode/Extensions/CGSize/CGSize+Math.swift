@@ -42,6 +42,10 @@ public extension CGSize {
         return width / height
     }
     
+    var diagonal: CGFloat {
+        CGPoint.zero.distance(to: .init(x: width, y: height))
+    }
+    
     /// Увеличить размер на указанный мультипликатор
     /// - Parameter scale: мультипликатор размера исходного прямоугольника
     func scaled(scale: CGFloat) -> CGSize {

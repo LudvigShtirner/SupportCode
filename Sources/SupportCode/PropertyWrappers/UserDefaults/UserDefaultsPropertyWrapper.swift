@@ -7,9 +7,34 @@
 
 import Foundation
 
+/// Property wrapper for userDefaults. Store and obtain data
+@propertyWrapper
+public struct UDStored<T> {
+    public var wrappedValue: T {
+        get {
+            storage.data(forKey: key) as? T ?? defaultValue
+        }
+        set {
+            storage.set(newValue, forKey: key)
+        }
+    }
+    
+    private let key: String
+    private let defaultValue: T
+    private let storage: UserDefaults
+    
+    public init(key: String,
+                defaultValue: T,
+                storage: UserDefaults = UserDefaults.standard) {
+        self.key = key
+        self.defaultValue = defaultValue
+        self.storage = storage
+    }
+}
+
 /// Property wrapper for userDefaults. Store and obtain Codable data. Encoding and Decoding by JSON
 @propertyWrapper
-public struct Stored<T: JsonCodable> {
+public struct UDCodableStored<T: JsonCodable> {
     public var wrappedValue: T {
         get {
             guard let data = storage.data(forKey: key) else { return defaultValue }

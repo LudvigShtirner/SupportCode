@@ -24,3 +24,4 @@ import class UIKit.UIImage
 
 /// Блок с изображением
 public typealias ImageBlock = (UIImage) -> Void
+public typealias OptImageBlock = (UIImage?) -> Void

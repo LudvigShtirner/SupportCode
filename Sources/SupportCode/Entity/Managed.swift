@@ -12,8 +12,6 @@ import CoreData
 public protocol Managed: NSFetchRequestResult {
     /// Название сущности CoreData
     static var entityName: String { get }
-    /// Описание сущности Core Data
-    static var entityDescription: NSEntityDescription { get }
     /// Описание сортировки
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
@@ -35,7 +33,7 @@ public extension Managed {
 // MARK: - NSManagedObject
 public extension Managed where Self: NSManagedObject {
     /// Название сущности
-    static var entityName: String { return entityDescription.name! }
+    static var entityName: String { entity().name! }
     
     /// Найти объект, удовлетворяющий предикату, или создать новый
     /// - Parameters:
@@ -128,11 +126,11 @@ public extension NSManagedObjectContext {
     /// - Parameter block: блок изменений
     /// - Parameter completion: блок по окончанию сохранения изменений. Если изменения не были сохранены, то содержит ошибку
     func performChanges(block: @escaping () -> Void,
-                        completion: @escaping ResultBlock<Void>) {
+                        completion: ResultBlock<Void>? = nil) {
         perform {
             block()
             let result = self.saveOrRollback()
-            completion(result)
+            completion?(result)
         }
     }
 }
