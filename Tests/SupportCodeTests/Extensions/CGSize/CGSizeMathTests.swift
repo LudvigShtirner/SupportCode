@@ -5,8 +5,9 @@
 //  Created by Филиппов Алексей on 13.05.2022.
 //
 
+// Apple
 import XCTest
-
+// SPM
 @testable import SupportCode
 
 class CGSizeMathTests: XCTestCase {

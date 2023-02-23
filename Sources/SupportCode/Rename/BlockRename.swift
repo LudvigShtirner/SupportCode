@@ -5,7 +5,9 @@
 //  Created by Алексей Филиппов on 27.12.2020.
 //
 
+// Apple
 import Foundation
+import class UIKit.UIImage
 
 /// Пустой блок
 public typealias VoidBlock = () -> Void
@@ -19,8 +21,6 @@ public typealias StringBlock = (String) -> Void
 public typealias DataBlock = (Data) -> Void
 /// Блок с Result
 public typealias ResultBlock<T> = (Result<T, Error>) -> Void
-
-import class UIKit.UIImage
 
 /// Блок с изображением
 public typealias ImageBlock = (UIImage) -> Void

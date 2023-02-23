@@ -5,6 +5,7 @@
 //  Created by Алексей Филиппов on 01.01.2023.
 //
 
+// Apple
 import Foundation
 
 extension NSObjectProtocol where Self: NSObject {

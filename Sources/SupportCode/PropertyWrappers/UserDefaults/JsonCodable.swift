@@ -5,6 +5,7 @@
 //  Created by Филиппов Алексей on 16.05.2022.
 //
 
+// Apple
 import Foundation
 
 public protocol JsonCodable: Codable {

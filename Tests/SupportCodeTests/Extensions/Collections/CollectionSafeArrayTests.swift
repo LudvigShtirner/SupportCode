@@ -5,6 +5,7 @@
 //  Created by Филиппов Алексей on 11.05.2022.
 //
 
+// Apple
 import XCTest
 
 class CollectionSafeArrayTests: XCTestCase {

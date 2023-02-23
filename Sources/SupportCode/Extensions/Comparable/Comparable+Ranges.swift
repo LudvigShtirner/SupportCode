@@ -5,6 +5,7 @@
 //  Created by Алексей Филиппов on 04.02.2023.
 //
 
+// Apple
 import Foundation
 
 public extension Comparable {

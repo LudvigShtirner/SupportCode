@@ -8,7 +8,12 @@
 // Apple
 import UIKit
 
-/// Словарь цветов отображения для разных стилей
+/**
+ Map with colors for different color schemes
+ 
+ - RU:
+ Словарь цветов отображения для разных стилей
+ */
 public struct ColorMap {
     // MARK: - Data
     /// Цвет в светлой теме

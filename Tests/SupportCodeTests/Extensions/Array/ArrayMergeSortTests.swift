@@ -5,8 +5,9 @@
 //  Created by Филиппов Алексей on 16.05.2022.
 //
 
+// Apple
 import XCTest
-
+// SPM
 class ArrayMergeSortTests: XCTestCase {
     // MARK: - Tests
     func testThatMergeSortWorks() {

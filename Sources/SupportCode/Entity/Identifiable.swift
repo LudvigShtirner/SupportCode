@@ -5,6 +5,9 @@
 //  Created by Алексей Филиппов on 07.01.2021.
 //
 
+// Apple
+import Foundation
+
 /// Протокол переиспользуемого объекта
 public protocol Identifiable {
     /// Идентификатор переиспользования объекта

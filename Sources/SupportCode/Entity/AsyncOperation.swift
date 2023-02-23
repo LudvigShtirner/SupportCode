@@ -35,7 +35,7 @@ import Foundation
  }
  ```
 */
-class AsyncOperation: Operation {
+open class AsyncOperation: Operation {
     // MARK: - Info
     /// Internal execute state of operation. Used for manual management of operation
     private var _executing: Bool = false {
@@ -49,11 +49,11 @@ class AsyncOperation: Operation {
     }
     
     // MARK: - Overrides
-    override var isExecuting: Bool { _executing }
-    override var isFinished: Bool { _finished }
-    override var isAsynchronous: Bool { true }
+    public override var isExecuting: Bool { _executing }
+    public override var isFinished: Bool { _finished }
+    public override var isAsynchronous: Bool { true }
     
-    override func start() {
+    public override func start() {
         if isCancelled {
             _finished = true
             return
@@ -65,7 +65,7 @@ class AsyncOperation: Operation {
     }
     
     // MARK: - Interface methods
-    func completeOperation() {
+    public func completeOperation() {
         _executing = false
         _finished = true
     }

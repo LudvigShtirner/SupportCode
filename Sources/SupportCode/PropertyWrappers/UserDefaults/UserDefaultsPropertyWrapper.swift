@@ -5,6 +5,7 @@
 //  Created by Филиппов Алексей on 12.05.2022.
 //
 
+// Apple
 import Foundation
 
 /// Property wrapper for userDefaults. Store and obtain data
