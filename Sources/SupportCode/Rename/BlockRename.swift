@@ -15,6 +15,8 @@ public typealias VoidBlock = () -> Void
 public typealias BoolBlock = (Bool) -> Void
 /// Блок с числом
 public typealias IntBlock = (Int) -> Void
+/// Блок с числом с плавающей точкой
+public typealias DoubleBlock = (Double) -> Void
 /// Блок со строкой
 public typealias StringBlock = (String) -> Void
 /// Блок с датой

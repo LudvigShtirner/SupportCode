@@ -7,7 +7,15 @@
 
 // Apple
 import Foundation
-
+/**
+ 
+ Restricted collection
+ 
+ - Ru:
+ 
+ Лимитированная коллекция-Stack
+ 
+ */
 public struct RestrictedStack<T> {
     // MARK: - Data
     public private(set) var storage: [T] = []
@@ -43,7 +51,7 @@ public struct RestrictedStack<T> {
         return storage.count > 1 && currentIndex != storage.count - 1
     }
     
-    mutating func obtainPreviousState() -> T? {
+    public mutating func obtainPreviousState() -> T? {
         if !hasPreviousState {
             return nil
         }
@@ -51,7 +59,7 @@ public struct RestrictedStack<T> {
         return storage[currentIndex]
     }
     
-    mutating func obtainNextState() -> T? {
+    public mutating func obtainNextState() -> T? {
         if !hasNextState {
             return nil
         }

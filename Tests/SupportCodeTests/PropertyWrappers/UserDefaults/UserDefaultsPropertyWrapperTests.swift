@@ -31,7 +31,7 @@ class UserDefaultsPropertyWrapperTests: XCTestCase {
     // MARK: - Tests
     func testThatPropertyWrapperReturnsDefaultValue() {
         // Given
-        @Stored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
+        @UDCodableStored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
         // When
         XCTAssertNil(userDefaultsMock.value(forKey: key))
         let value = sut.value
@@ -40,10 +40,10 @@ class UserDefaultsPropertyWrapperTests: XCTestCase {
         XCTAssertEqual(value, "")
         XCTAssertNil(storedValue)
     }
-    
+
     func testThatPropertyWrapperReturnsStoredValue() {
         // Given
-        @Stored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
+        @UDCodableStored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
         let expectedResult = "Some Value"
         // When
         XCTAssertNil(userDefaultsMock.value(forKey: key))

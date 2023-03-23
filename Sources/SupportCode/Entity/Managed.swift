@@ -8,7 +8,13 @@
 // Apple
 import CoreData
 
-/// Протокол объекта CoreData
+/**
+ Protocol of CoreData object
+ 
+ - RU:
+ 
+ Протокол объекта CoreData
+ */
 public protocol Managed: NSFetchRequestResult {
     /// Название сущности CoreData
     static var entityName: String { get }
@@ -111,6 +117,7 @@ public extension NSManagedObjectContext {
     
     /// Попробовать сохранить изменения
     /// - Returns: Ничего в случае успеха и ошибку, если сохранить не удалось
+    @discardableResult
     func saveOrRollback() -> Result<Void, Error> {
         if !hasChanges { return .success }
         do {
@@ -125,12 +132,22 @@ public extension NSManagedObjectContext {
     /// Применить изменения
     /// - Parameter block: блок изменений
     /// - Parameter completion: блок по окончанию сохранения изменений. Если изменения не были сохранены, то содержит ошибку
-    func performChanges(block: @escaping () -> Void,
-                        completion: ResultBlock<Void>? = nil) {
+    func performChangesAsync(block: @escaping () -> Void,
+                             completion: ResultBlock<Void>? = nil) {
         perform {
             block()
             let result = self.saveOrRollback()
             completion?(result)
         }
+    }
+    
+    @discardableResult
+    func performChanges(block: @escaping () -> Void) -> Result<Void, Error> {
+        var result: Result<Void, Error> = .success
+        performAndWait {
+            block()
+            result = self.saveOrRollback()
+        }
+        return result
     }
 }

@@ -112,6 +112,15 @@ class CGSizeMathTests: XCTestCase {
         XCTAssertEqual(result, expected)
     }
     
+    func testThatSizeDiagonalIsCorrect() {
+        // Given
+        let size = CGSize(width: 3, height: 4)
+        // When
+        let diagonal = size.diagonal
+        // Then
+        XCTAssertEqual(diagonal, 5)
+    }
+    
     func testThatMinSideAndMaxSideAreFound() {
         // Given
         let minimumSide = 10.3

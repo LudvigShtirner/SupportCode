@@ -26,7 +26,7 @@ public struct UDStored<T> {
     
     public init(key: String,
                 defaultValue: T,
-                storage: UserDefaults = UserDefaults.standard) {
+                storage: UserDefaults = .standard) {
         self.key = key
         self.defaultValue = defaultValue
         self.storage = storage
@@ -38,16 +38,13 @@ public struct UDStored<T> {
 public struct UDCodableStored<T: JsonCodable> {
     public var wrappedValue: T {
         get {
-            guard let data = storage.data(forKey: key) else { return defaultValue }
-            guard let model = try? T.decode(from: data) else {
-                fatalError("Decoding for \(T.self) is errored!")
+            guard let data = storage.data(forKey: key) else {
+                return defaultValue
             }
-            return model
+            return try! T.decode(from: data)
         }
         set {
-            guard let data = try? newValue.encode() else {
-                fatalError("Encoding for \(T.self) is errored!")
-            }
+            let data = try! newValue.encode()
             storage.set(data, forKey: key)
         }
     }

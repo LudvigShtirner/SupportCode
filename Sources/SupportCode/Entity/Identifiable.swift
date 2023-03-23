@@ -8,7 +8,13 @@
 // Apple
 import Foundation
 
-/// Протокол переиспользуемого объекта
+/**
+ Protocol  of reusable object
+ 
+ - RU:
+ 
+ Протокол переиспользуемого объекта
+ */
 public protocol Identifiable {
     /// Идентификатор переиспользования объекта
     static var identifier: String { get }

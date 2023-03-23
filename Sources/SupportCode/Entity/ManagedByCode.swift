@@ -8,7 +8,15 @@
 // Apple
 import CoreData
 
-/// Протокол объекта CoreData, сконфигурированного через код
+/**
+ 
+ Protocol of CoreData Object, configured in code
+ 
+ - RU:
+ 
+ Протокол объекта CoreData, сконфигурированного через код
+ 
+ */
 public protocol ManagedByCode: Managed {
     /// Описание сущности Core Data
     static var entityDescription: NSEntityDescription { get }
