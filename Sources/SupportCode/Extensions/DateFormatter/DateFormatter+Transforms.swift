@@ -9,7 +9,7 @@
 import Foundation
 
 public extension DateFormatter {
-    // MARK: - Life Cycle
+    // MARK: - Inits
     static let shared = DateFormatter()
     
     /// Получить месяц строкой в именительном падеже

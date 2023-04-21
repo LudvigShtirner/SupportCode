@@ -45,7 +45,7 @@ public extension NSRelationshipDescription {
         /// Флаг опционально значения
         let isOptional: Bool
         
-        // MARK: - Life cycle
+        // MARK: - Inits
         /// Создать описание связи с моделью
         /// - Parameters:
         ///   - property: название поля

@@ -35,7 +35,7 @@ fileprivate final class BundleMock: Bundle {
     // MARK: - Data
     private let isEmptyLocalizations: Bool
     
-    // MARK: - Life cycle
+    // MARK: - Inits
     init(isEmptyLocalizations: Bool) {
         self.isEmptyLocalizations = isEmptyLocalizations
         super.init()

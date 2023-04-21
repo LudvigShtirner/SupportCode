@@ -68,7 +68,7 @@ final class AsyncOperationTests: XCTestCase {
         private let progressTimer = ProgressTimer(updateStep: 0.05)
         private let completion: VoidBlock
         
-        // MARK: - Life cycle
+        // MARK: - Inits
         init(completion: @escaping VoidBlock) {
             self.completion = completion
         }

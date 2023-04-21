@@ -8,13 +8,11 @@
 // Apple
 import Foundation
 /**
- 
  Restricted collection
  
  - Ru:
  
  Лимитированная коллекция-Stack
- 
  */
 public struct RestrictedStack<T> {
     // MARK: - Data
@@ -22,7 +20,7 @@ public struct RestrictedStack<T> {
     private var currentIndex: Int
     private let maxCount: Int
     
-    // MARK: - Life cycle
+    // MARK: - Inits
     public init(initialState: T?,
                 maxCount: Int) {
         if let initialState = initialState {

@@ -19,7 +19,7 @@ public final class ProgressTimer: NSObject {
     
     private var progressBlock: DoubleBlock?
     
-    // MARK: - Life cycle
+    // MARK: - Inits
     public init(updateStep: TimeInterval,
                 finishTime: TimeInterval = .ulpOfOne) {
         self.updateStep = updateStep

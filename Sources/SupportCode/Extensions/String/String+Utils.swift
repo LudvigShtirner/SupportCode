@@ -48,35 +48,4 @@ public extension String {
         let end = index(start, offsetBy: closedRange.upperBound - closedRange.lowerBound)
         return String(self[start ..< end])
     }
-    
-    //    func contains(_ searchString: String,
-    //                  typoCount: UInt) -> Bool {
-    //        if searchString.isEmpty {
-    //            return true
-    //        }
-    //        let lowercasedSelf = self.lowercased()
-    //        let searchLowercased = searchString.lowercased()
-    //        let searchChar = Array(searchLowercased)[0]
-    //        guard let firstIndex = lowercasedSelf.firstIndex(of: searchChar) else {
-    //            if typoCount == 0 {
-    //                return false
-    //            }
-    //            if searchLowercased.count < 1 {
-    //                return false
-    //            }
-    //            let selfSubstring = lowercasedSelf.substring(fromIndex: 1)
-    //            let searchSubstring = searchLowercased.substring(fromIndex: 1)
-    //            return selfSubstring.contains(searchSubstring,
-    //                                          typoCount: typoCount - 1)
-    //        }
-    //        if searchLowercased.count < 1 {
-    //            return true
-    //        }
-    //        let charIndex = lowercasedSelf.distance(from: lowercasedSelf.startIndex,
-    //                                                to: firstIndex)
-    //        let selfSubstring = lowercasedSelf.substring(fromIndex: charIndex)
-    //        let searchSubstring = searchLowercased.substring(fromIndex: 1)
-    //        return selfSubstring.contains(searchSubstring,
-    //                                      typoCount: typoCount)
-    //    }
 }

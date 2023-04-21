@@ -12,7 +12,7 @@ public final class WeakBox<T: AnyObject> {
     // MARK: - Data
     public weak var unbox: T?
     
-    // MARK: - Life cycle
+    // MARK: - Inits
     public init(_ value: T) {
         unbox = value
     }

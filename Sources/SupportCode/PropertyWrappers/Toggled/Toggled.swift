@@ -14,7 +14,7 @@ public struct Toggled<Value> {
     private var currentValue: Value
     private var anotherValue: Value
     
-    // MARK: - Life Cycle
+    // MARK: - Inits
     public init(wrappedValue value: Value, _ anotherValue: Value) {
         self.anotherValue = anotherValue
         self.currentValue = value
