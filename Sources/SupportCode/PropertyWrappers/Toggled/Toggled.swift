@@ -15,7 +15,7 @@ public struct Toggled<Value> {
     private var anotherValue: Value
     
     // MARK: - Inits
-    public init(wrappedValue value: Value, _ anotherValue: Value) {
+    public init(wrappedValue value: Value, anotherValue: Value) {
         self.anotherValue = anotherValue
         self.currentValue = value
         wrappedValue = value
@@ -33,4 +33,9 @@ public struct Toggled<Value> {
         anotherValue = currentValue
         currentValue = tmp
     }
+}
+
+class aaa {
+    @Toggled(anotherValue: 5)
+    var toggled = 4
 }

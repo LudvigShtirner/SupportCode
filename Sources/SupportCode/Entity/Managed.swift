@@ -10,10 +10,6 @@ import CoreData
 
 /**
  Protocol of CoreData object
- 
- - RU:
- 
- Протокол объекта CoreData
  */
 public protocol Managed: NSFetchRequestResult {
     /// Название сущности CoreData

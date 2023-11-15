@@ -23,6 +23,7 @@ public typealias StringBlock = (String) -> Void
 public typealias DataBlock = (Data) -> Void
 /// Блок с Result
 public typealias ResultBlock<T> = (Result<T, Error>) -> Void
+public typealias ResultErrorBlock<T, E: Error> = (Result<T, E>) -> Void
 
 /// Блок с изображением
 public typealias ImageBlock = (UIImage) -> Void

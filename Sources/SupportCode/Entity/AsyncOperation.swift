@@ -17,16 +17,6 @@ import Foundation
  > Warning:
  You must call completeOperation at end
  
- - RU:
- 
- Базовая асинхронная операция
- > Important:
- Создает новый поток при вызове
- 
- > Warning:
- Обязательно вызвать completeOperation по завершению операции
- 
- --------------------------------Code--------------------------------
  ```
  final class SomeOperation: AsyncOperation {
     override func main() {
@@ -36,17 +26,21 @@ import Foundation
  ```
 */
 open class AsyncOperation: Operation {
-    // MARK: - Info
+    // MARK: - Data
     /// Internal execute state of operation. Used for manual management of operation
     private var _executing: Bool = false {
-        willSet { willChangeValue(forKey: "isExecuting") }
-        didSet { didChangeValue(forKey: "isExecuting") }
+        willSet { willChangeValue(forKey: Self.isExecutingKey) }
+        didSet { didChangeValue(forKey: Self.isExecutingKey) }
     }
     /// Internal finish state of operation. Used for manual management of operation
     private var _finished: Bool = false {
-        willSet { willChangeValue(forKey: "isFinished") }
-        didSet { didChangeValue(forKey: "isFinished") }
+        willSet { willChangeValue(forKey: Self.isFinishedKey) }
+        didSet { didChangeValue(forKey: Self.isFinishedKey) }
     }
+    /// Key to observe isExecuting changes in operation
+    private static let isExecutingKey = "isExecuting"
+    /// Key to observe isFinished changes in operation
+    private static let isFinishedKey = "isFinished"
     
     // MARK: - Overrides
     public override var isExecuting: Bool { _executing }

@@ -21,7 +21,7 @@ public final class ProgressTimer: NSObject {
     
     // MARK: - Inits
     public init(updateStep: TimeInterval,
-                finishTime: TimeInterval = .ulpOfOne) {
+                finishTime: TimeInterval) {
         self.updateStep = updateStep
         self.finishTime = finishTime
     }

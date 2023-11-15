@@ -10,10 +10,6 @@ import CoreData
 
 /**
  Protocol of CoreData Object, configured in code
- 
- - RU:
- 
- Протокол объекта CoreData, сконфигурированного через код
  */
 public protocol ManagedByCode: Managed {
     /// Описание сущности Core Data

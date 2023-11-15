@@ -10,21 +10,21 @@ import Foundation
 
 /// Property wrapper for userDefaults. Store and obtain data
 @propertyWrapper
-public struct UDStored<T> {
+public struct UDStored<T: Codable> {
     public var wrappedValue: T {
         get {
-            storage.data(forKey: key) as? T ?? defaultValue
+            storage.data(forKey: key.stringValue) as? T ?? defaultValue
         }
         set {
-            storage.set(newValue, forKey: key)
+            storage.set(newValue, forKey: key.stringValue)
         }
     }
     
-    private let key: String
+    private let key: UserDefaultsKey
     private let defaultValue: T
     private let storage: UserDefaults
     
-    public init(key: String,
+    public init(key: UserDefaultsKey,
                 defaultValue: T,
                 storage: UserDefaults = .standard) {
         self.key = key
@@ -38,22 +38,22 @@ public struct UDStored<T> {
 public struct UDCodableStored<T: JsonCodable> {
     public var wrappedValue: T {
         get {
-            guard let data = storage.data(forKey: key) else {
+            guard let data = storage.data(forKey: key.stringValue) else {
                 return defaultValue
             }
             return try! T.decode(from: data)
         }
         set {
             let data = try! newValue.encode()
-            storage.set(data, forKey: key)
+            storage.set(data, forKey: key.stringValue)
         }
     }
     
-    private let key: String
+    private let key: UserDefaultsKey
     private let defaultValue: T
     private let storage: UserDefaults
     
-    public init(key: String,
+    public init(key: UserDefaultsKey,
                 defaultValue: T,
                 storage: UserDefaults = UserDefaults.standard) {
         self.key = key

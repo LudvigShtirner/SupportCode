@@ -13,17 +13,17 @@ import XCTest
 class UserDefaultsPropertyWrapperTests: XCTestCase {
     // MARK: - Data
     private var userDefaultsMock: UserDefaults!
-    private let key = String(describing: UserDefaultsPropertyWrapperTests.self)
+    private let key = UserDefaultsKey(stringValue: String(describing: UserDefaultsPropertyWrapperTests.self))
     
     // MARK: - Overrides
     override func setUpWithError() throws {
         try super.setUpWithError()
-        let suiteName = key
+        let suiteName = key.stringValue
         userDefaultsMock = UserDefaults(suiteName: suiteName)
     }
     
     override func tearDownWithError() throws {
-        userDefaultsMock.removeObject(forKey: key)
+        userDefaultsMock.removeObject(forKey: key.stringValue)
         userDefaultsMock = nil
         try super.tearDownWithError()
     }
@@ -33,9 +33,9 @@ class UserDefaultsPropertyWrapperTests: XCTestCase {
         // Given
         @UDCodableStored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
         // When
-        XCTAssertNil(userDefaultsMock.value(forKey: key))
+        XCTAssertNil(userDefaultsMock.value(forKey: key.stringValue))
         let value = sut.value
-        let storedValue = userDefaultsMock.value(forKey: key)
+        let storedValue = userDefaultsMock.value(forKey: key.stringValue)
         // Then
         XCTAssertEqual(value, "")
         XCTAssertNil(storedValue)
@@ -46,10 +46,10 @@ class UserDefaultsPropertyWrapperTests: XCTestCase {
         @UDCodableStored(key: key, defaultValue: .makeDefault(), storage: userDefaultsMock) var sut: ExampleCodable
         let expectedResult = "Some Value"
         // When
-        XCTAssertNil(userDefaultsMock.value(forKey: key))
+        XCTAssertNil(userDefaultsMock.value(forKey: key.stringValue))
         sut = ExampleCodable(value: expectedResult)
         let value = sut.value
-        let storedValue = userDefaultsMock.value(forKey: key)
+        let storedValue = userDefaultsMock.value(forKey: key.stringValue)
         // Then
         XCTAssertEqual(value, expectedResult)
         XCTAssertNotNil(storedValue)

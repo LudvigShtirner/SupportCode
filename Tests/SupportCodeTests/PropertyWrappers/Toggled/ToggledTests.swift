@@ -8,21 +8,21 @@
 // Apple
 import XCTest
 // SPM
-@testable import SupportCode
+import SupportCode
 
 class ToggledTests: XCTestCase {
     // MARK: - Tests
     func testThatToggledCreatedCorrectly() {
         // Given
         // When
-        @Toggled(50) var result = 10
+        @Toggled(anotherValue: 50) var result = 10
         // Then
         XCTAssertEqual(result, 10)
     }
     
     func testThatToggledChangeValue() {
         // Given
-        @Toggled(50) var result = 10
+        @Toggled(anotherValue: 50) var result = 10
         // When
         _result.toggle()
         // Then

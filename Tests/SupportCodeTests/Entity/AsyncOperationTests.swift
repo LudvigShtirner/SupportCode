@@ -65,7 +65,7 @@ final class AsyncOperationTests: XCTestCase {
     // MARK: - Subtypes
     final class ExampleAsyncOperation: AsyncOperation {
         // MARK: - Data
-        private let progressTimer = ProgressTimer(updateStep: 0.05)
+        private let progressTimer = ProgressTimer(updateStep: 0.05, finishTime: 1)
         private let completion: VoidBlock
         
         // MARK: - Inits
@@ -75,7 +75,7 @@ final class AsyncOperationTests: XCTestCase {
         
         // MARK: - AsyncOperation
         override func main() {
-            progressTimer.configureAndStart(finishTime: 1.0) { [weak self] progress in
+            progressTimer.configureAndStart { [weak self] progress in
                 if progress >= 1.0 {
                     self?.completion()
                     self?.completeOperation()

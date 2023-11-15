@@ -14,14 +14,6 @@ import Foundation
  Provide common implementation of localization
  >Warning:
  Must inherits from parent class because program searchs current Bundle for automatic linking .strings file
- 
- - RU:
- 
- Протокол ресурса локализации
-
- Предоставляет общую реализацию для локализации
- >Warning:
- Должен быть отнаследован от класса, так как ищется текущий Bundle для автоматического подтягивания strings файла
  */
 public protocol LocalizationResource: AnyObject {
     /// Перевести ключ на текущий язык

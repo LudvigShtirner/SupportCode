@@ -9,10 +9,6 @@
 import Foundation
 /**
  Restricted collection
- 
- - Ru:
- 
- Лимитированная коллекция-Stack
  */
 public struct RestrictedStack<T> {
     // MARK: - Data
