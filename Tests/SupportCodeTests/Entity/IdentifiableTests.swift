@@ -15,12 +15,12 @@ final class IdentifiableTests: XCTestCase {
     func testThatIdentifiableReturnsClassName() {
         // Given
         // When
-        let identifier = MockClass.identifier
+        let identifier = MockClass.classIdentifier
         // Then
         XCTAssertEqual(identifier, "MockClass")
     }
 }
 
-fileprivate final class MockClass: Identifiable {
+fileprivate final class MockClass: ClassIdentifiable {
     
 }
