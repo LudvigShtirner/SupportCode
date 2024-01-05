@@ -14,7 +14,7 @@ public extension CGSize {
     /// - Returns: Размер вписанного прямоугольника с указанным соотношением сторон
     func sizeInside(with aspectRatio: CGFloat) -> CGSize {
         if !aspectRatio.isNormal {
-            return .nan
+            return CGSize.nan
         }
         let insideWidth = min(height * aspectRatio, width)
         let insideHeight = min(width / aspectRatio, height)
@@ -27,7 +27,7 @@ public extension CGSize {
     /// - Returns: Размер описанного прямоугольника с указанным соотношением сторон
     func sizeOutside(with aspectRatio: CGFloat) -> CGSize {
         if !aspectRatio.isNormal {
-            return .nan
+            return CGSize.nan
         }
         let outsideWidth = max(height * aspectRatio, width)
         let outsideHeight = max(width / aspectRatio, height)
@@ -37,13 +37,13 @@ public extension CGSize {
     
     /// Соотношение ширины к высоте
     var aspectRatio: CGFloat {
-        if !width.isNormal {  return .nan }
-        if !height.isNormal { return .nan }
+        if !width.isNormal {  return CGFloat.nan }
+        if !height.isNormal { return CGFloat.nan }
         return width / height
     }
     
     var diagonal: CGFloat {
-        CGPoint.zero.distance(to: .init(x: width, y: height))
+        CGPoint.zero.distance(to: CGPoint(x: width, y: height))
     }
     
     /// Увеличить размер на указанный мультипликатор

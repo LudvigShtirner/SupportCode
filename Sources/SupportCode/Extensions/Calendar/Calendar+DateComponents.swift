@@ -44,7 +44,8 @@ public extension Calendar {
     ///   - dateComponent: Компонент даты для поиска
     ///   - date: Дата для поиска
     /// - Returns: Компонент из даты
-    private func getComponent(_ dateComponent: Calendar.Component, from date: Date?) -> Int {
+    private func getComponent(_ dateComponent: Calendar.Component, 
+                              from date: Date?) -> Int {
         let d = date ?? Date()
         return component(dateComponent, from: d)
     }

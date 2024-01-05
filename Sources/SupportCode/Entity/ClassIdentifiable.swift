@@ -8,11 +8,7 @@
 // Apple
 import Foundation
 
-/**
- Protocol  of reusable class
- */
 public protocol ClassIdentifiable {
-    /// Идентификатор переиспользования объекта
     static var classIdentifier: String { get }
 }
 

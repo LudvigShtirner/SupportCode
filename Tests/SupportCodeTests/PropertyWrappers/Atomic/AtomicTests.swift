@@ -13,8 +13,8 @@ import SupportCode
 class AtomicTests: XCTestCase {
     // MARK: - Data
     private let queue = DispatchQueue(label: "com.AtomicTests.concurrent",
-                                      qos: .userInteractive,
-                                      attributes: .concurrent)
+                                      qos: DispatchQoS.userInteractive,
+                                      attributes: DispatchQueue.Attributes.concurrent)
     
     // MARK: - Tests
     func testThatIntIsAtomic() {

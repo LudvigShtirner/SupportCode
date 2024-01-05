@@ -9,7 +9,7 @@ private let supportCodeTests = "SupportCodeTests"
 let package = Package(
     name: supportCode,
     defaultLocalization: "en",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v15)],
     products: [
         .library(name: supportCode,
                  targets: [supportCode]),

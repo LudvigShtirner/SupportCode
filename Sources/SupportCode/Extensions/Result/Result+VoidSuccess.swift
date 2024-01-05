@@ -12,6 +12,6 @@ import Foundation
 public extension Result where Success == Void {
     /// Успех без возвращаемого значения
     static var success: Result {
-        return .success(())
+        return Result.success(())
     }
 }

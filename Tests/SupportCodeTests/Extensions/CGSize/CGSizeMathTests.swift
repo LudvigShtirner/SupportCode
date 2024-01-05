@@ -69,27 +69,27 @@ class CGSizeMathTests: XCTestCase {
     }
     
     func testThatAspectRatioIsNotCalculatedWithZeroWidth() {
-        testAspectRatio(width: .zero)
+        testAspectRatio(width: CGFloat.zero)
     }
     
     func testThatAspectRatioIsNotCalculatedWithNanWidth() {
-        testAspectRatio(width: .nan)
+        testAspectRatio(width: CGFloat.nan)
     }
     
     func testThatAspectRatioIsNotCalculatedWithInfinityWidth() {
-        testAspectRatio(width: .infinity)
+        testAspectRatio(width: CGFloat.infinity)
     }
     
     func testThatAspectRatioIsNotCalculatedWithZeroHeight() {
-        testAspectRatio(height: .zero)
+        testAspectRatio(height: CGFloat.zero)
     }
     
     func testThatAspectRatioIsNotCalculatedWithNanHeight() {
-        testAspectRatio(height: .nan)
+        testAspectRatio(height: CGFloat.nan)
     }
     
     func testThatAspectRatioIsNotCalculatedWithInfinityHeight() {
-        testAspectRatio(height: .infinity)
+        testAspectRatio(height: CGFloat.infinity)
     }
     
     func testThatSizeScaledCorrectly() {

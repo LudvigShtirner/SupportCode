@@ -26,7 +26,7 @@ final class DispatchQueueUtilsTests: XCTestCase {
         var flag = false
         let expectation = XCTestExpectation()
         // When
-        DispatchQueue.global(qos: .userInteractive).async {
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInteractive).async {
             DispatchQueue.callOnMainQueue {
                 flag = true
                 expectation.fulfill()

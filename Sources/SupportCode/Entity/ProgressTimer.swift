@@ -14,7 +14,7 @@ public final class ProgressTimer: NSObject {
     private let updateStep: TimeInterval
     private let finishTime: TimeInterval
     
-    private var spentTime: TimeInterval = .zero
+    private var spentTime = TimeInterval.zero
     private var shouldKeepRunning = false
     
     private var progressBlock: DoubleBlock?
@@ -40,19 +40,19 @@ public final class ProgressTimer: NSObject {
     
     public func invalidate() {
         stop()
-        spentTime = .zero
+        spentTime = TimeInterval.zero
         progressBlock = nil
     }
     
     // MARK: - Private methods
     private func start() {
-        spentTime = .zero
+        spentTime = TimeInterval.zero
         timer = Timer.scheduledTimer(timeInterval: updateStep,
                                      target: self,
                                      selector: #selector(updateSpentTime),
                                      userInfo: nil,
                                      repeats: true)
-        RunLoop.current.add(timer!, forMode: .common)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.common)
         if Thread.isMainThread {
             return
         }

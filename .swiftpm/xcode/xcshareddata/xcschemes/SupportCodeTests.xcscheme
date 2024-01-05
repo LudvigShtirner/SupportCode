@@ -35,6 +35,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "509D77D329FE097700489A58"
+            BuildableName = "PhotoEditor.app"
+            BlueprintName = "PhotoEditor"
+            ReferencedContainer = "container:../../PackagesProject/PhotoEditor/PhotoEditor.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

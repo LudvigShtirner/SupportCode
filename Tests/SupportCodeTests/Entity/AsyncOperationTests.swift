@@ -14,7 +14,7 @@ final class AsyncOperationTests: XCTestCase {
     // MARK: - Data
     private let operationQueue: OperationQueue = {
         let queue = OperationQueue()
-        queue.qualityOfService = .userInteractive
+        queue.qualityOfService = QualityOfService.userInteractive
         queue.maxConcurrentOperationCount = 1
         return queue
     }()

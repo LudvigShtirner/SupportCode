@@ -26,7 +26,7 @@ public struct UDStored<T: Codable> {
     
     public init(key: UserDefaultsKey,
                 defaultValue: T,
-                storage: UserDefaults = .standard) {
+                storage: UserDefaults = UserDefaults.standard) {
         self.key = key
         self.defaultValue = defaultValue
         self.storage = storage

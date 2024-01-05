@@ -23,18 +23,18 @@ public extension Date {
         let startOfDay = createWithFirstSecondsOfDay()
         guard let modified = Calendar.current.date(byAdding: components, to: startOfDay) else {
             assertionFailure("Cannot create date by adding components when calculating last seconds of date")
-            return .init(timeIntervalSince1970: .zero)
+            return Date(timeIntervalSince1970: TimeInterval.zero)
         }
         return modified
     }
     
     /// Создать дату первого дня месяца
     func createWithFirstDayOfMonth() -> Date {
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents([.year, .month], from: self)
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let components = calendar.dateComponents([Calendar.Component.year, Calendar.Component.month], from: self)
         guard let startOfMonth = calendar.date(from: components) else {
             assertionFailure("Cannot create date from month and year component")
-            return .init(timeIntervalSince1970: .zero)
+            return Date(timeIntervalSince1970: TimeInterval.zero)
         }
         return startOfMonth
     }
@@ -44,9 +44,9 @@ public extension Date {
         var components = DateComponents()
         components.month = 1
         components.nanosecond = -1
-        guard let modified = Calendar(identifier: .gregorian).date(byAdding: components, to: createWithFirstDayOfMonth()) else {
+        guard let modified = Calendar(identifier: Calendar.Identifier.gregorian).date(byAdding: components, to: createWithFirstDayOfMonth()) else {
             assertionFailure("Cannot create date by adding components when calculating last day of date")
-            return .init(timeIntervalSince1970: .zero)
+            return Date(timeIntervalSince1970: TimeInterval.zero)
         }
         return modified
     }

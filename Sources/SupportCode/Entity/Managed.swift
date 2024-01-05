@@ -115,13 +115,13 @@ public extension NSManagedObjectContext {
     /// - Returns: Ничего в случае успеха и ошибку, если сохранить не удалось
     @discardableResult
     func saveOrRollback() -> Result<Void, Error> {
-        if !hasChanges { return .success }
+        if !hasChanges { return Result.success }
         do {
             try save()
-            return .success
+            return Result.success
         } catch {
             rollback()
-            return .failure(error)
+            return Result.failure(error)
         }
     }
     
@@ -139,7 +139,7 @@ public extension NSManagedObjectContext {
     
     @discardableResult
     func performChanges(block: @escaping () -> Void) -> Result<Void, Error> {
-        var result: Result<Void, Error> = .success
+        var result: Result<Void, Error> = Result.success
         performAndWait {
             block()
             result = self.saveOrRollback()
