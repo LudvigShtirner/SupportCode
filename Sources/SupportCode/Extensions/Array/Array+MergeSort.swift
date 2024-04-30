@@ -38,20 +38,25 @@ public extension Array where Element: Comparable {
         var output: [Element] = []
         var mutableLeft = left
         var mutableRight = right
-        while mutableLeft.count > 0 && mutableRight.count > 0 {
-            if let firstElement = mutableLeft.first,
-               let secondElement = mutableRight.first {
-                if compareHandler(firstElement, secondElement) == false {
-                    output.append(secondElement)
-                    mutableRight.remove(at: 0)
+        while mutableLeft.isEmpty == false || mutableRight.isEmpty == false {
+            if let firstElement = mutableLeft.first {
+                if let secondElement = mutableRight.first {
+                    if compareHandler(firstElement, secondElement) == false {
+                        output.append(secondElement)
+                        mutableRight.remove(at: 0)
+                    } else {
+                        output.append(firstElement)
+                        mutableLeft.remove(at: 0)
+                    }
                 } else {
                     output.append(firstElement)
                     mutableLeft.remove(at: 0)
                 }
+            } else if let secondElement = mutableRight.first {
+                output.append(secondElement)
+                mutableRight.remove(at: 0)
             }
         }
-        output.append(contentsOf: mutableLeft)
-        output.append(contentsOf: mutableRight)
         return output
     }
 }

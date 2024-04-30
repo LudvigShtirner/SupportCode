@@ -10,7 +10,7 @@ import XCTest
 // SPM
 @testable import SupportCode
 
-class LocalizationResourceTests: XCTestCase {
+final class LocalizationResourceTests: XCTestCase {
     // MARK: - Tests
     func testThatValueFoundInSpecificLocalizationFile() {
         // Given

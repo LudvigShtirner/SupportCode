@@ -34,8 +34,3 @@ public struct Toggled<Value> {
         currentValue = tmp
     }
 }
-
-class aaa {
-    @Toggled(anotherValue: 5)
-    var toggled = 4
-}

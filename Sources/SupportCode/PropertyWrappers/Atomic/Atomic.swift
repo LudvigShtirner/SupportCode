@@ -11,7 +11,7 @@ import Foundation
 @propertyWrapper
 public final class Atomic<Value> {
     // MARK: - Data
-    private let queue = DispatchQueue(label: "com.supportCode.Atomic.\(UUID().uuidString)")
+    private let lock = NSLock()
     private var value: Value
     
     // MARK: - Inits
@@ -23,11 +23,20 @@ public final class Atomic<Value> {
     public var projectedValue: Atomic<Value> { self }
     
     public var wrappedValue: Value {
-        get { queue.sync { value } }
-        set { fatalError("Use mutate instead") }
+        get {
+            lock.lock()
+            let result = value
+            lock.unlock()
+            return result
+        }
+        set {
+            assertionFailure("Use mutate instead")
+        }
     }
     
     public func mutate(_ mutation: (inout Value) -> Void) {
-        queue.sync { mutation(&value) }
+        lock.lock()
+        mutation(&value)
+        lock.unlock()
     }
 }

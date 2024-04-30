@@ -1,21 +1,24 @@
 //
-//  Proxy.swift
+//  ProxyWithAction.swift
+//  
 //
-//
-//  Created by Алексей Филиппов on 22.11.2023.
+//  Created by Алексей Филиппов on 04.04.2024.
 //
 
 // Apple
 import Foundation
 
 @propertyWrapper
-public struct AnyProxy<EnclosingType, Value> {
+public struct AnyProxyWithAction<EnclosingType, Value> {
     // MARK: - Data
     private let keyPath: ReferenceWritableKeyPath<EnclosingType, Value>
+    private let extraAction: (EnclosingType, Value) -> Void
     
     // MARK: - Inits
-    public init(_ keyPath: ReferenceWritableKeyPath<EnclosingType, Value>) {
+    public init(_ keyPath: ReferenceWritableKeyPath<EnclosingType, Value>,
+                extraAction: @escaping (EnclosingType, Value) -> Void) {
         self.keyPath = keyPath
+        self.extraAction = extraAction
     }
     
     // MARK: - Interface methods
@@ -29,6 +32,7 @@ public struct AnyProxy<EnclosingType, Value> {
         set {
             let wrapper = instance[keyPath: storageKeyPath]
             instance[keyPath: wrapper.keyPath] = newValue
+            wrapper.extraAction(instance, newValue)
         }
     }
     
@@ -38,10 +42,3 @@ public struct AnyProxy<EnclosingType, Value> {
         set { assertionFailure("wrappedValue setter isn't accessed") }
     }
 }
-
-public protocol ProxyContainer {
-    typealias Proxy<T> = AnyProxy<Self, T>
-    typealias ProxyWithAction<T> = AnyProxyWithAction<Self, T>
-}
-
-extension NSObject: ProxyContainer {}

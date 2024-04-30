@@ -24,6 +24,6 @@ public struct Restricted<Value: Comparable> {
     // MARK: - PropertyWrapper
     public var wrappedValue: Value {
         get { storedValue }
-        set { storedValue = newValue.inRange(min: range.upperBound, max: range.upperBound) }
+        set { storedValue = newValue.inRange(min: range.lowerBound, max: range.upperBound) }
     }
 }

@@ -58,14 +58,15 @@ public extension CGSize {
     /// Возвращает максимальную сторону
     var maxSide: CGFloat { max(width, height) }
     
-    static var nan: CGSize {
-        CGSize(width: CGFloat.nan, height: CGFloat.nan)
-    }
-    
     /// Округлить размеры сторон
     /// - Returns: размер с целыми значениями
     func rounded() -> CGSize {
-        return CGSize(width: round(width),
-                      height: round(height))
+        CGSize(width: round(width),
+               height: round(height))
+    }
+    
+    var abs: CGSize {
+        CGSize(width: Swift.abs(width),
+               height: Swift.abs(height))
     }
 }
