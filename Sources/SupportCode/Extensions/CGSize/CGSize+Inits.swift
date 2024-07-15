@@ -5,7 +5,8 @@
 //  Created by Алексей Филиппов on 24.04.2024.
 //
 
-import Foundation
+// Apple
+import UIKit
 
 public extension CGSize {
     static func make(with side: CGFloat) -> CGSize {
@@ -16,5 +17,10 @@ public extension CGSize {
     static var nan: CGSize {
         CGSize(width: CGFloat.nan,
                height: CGFloat.nan)
+    }
+    
+    func toPixelGrid(scale: CGFloat = UIScreen.main.scale) -> CGSize {
+        CGSize(width: width.toPixelGrid(scale: scale),
+               height: height.toPixelGrid(scale: scale))
     }
 }

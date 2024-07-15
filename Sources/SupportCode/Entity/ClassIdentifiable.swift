@@ -9,11 +9,13 @@
 import Foundation
 
 public protocol ClassIdentifiable {
-    static var classIdentifier: String { get }
+    static var className: String { get }
 }
 
 public extension ClassIdentifiable {
-    static var classIdentifier: String {
+    static var className: String {
         String(describing: self)
     }
 }
+
+extension NSObject: ClassIdentifiable { }

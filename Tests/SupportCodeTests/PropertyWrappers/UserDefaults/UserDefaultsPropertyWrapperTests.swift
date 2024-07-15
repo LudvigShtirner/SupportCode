@@ -10,10 +10,10 @@ import XCTest
 // SPM
 @testable import SupportCode
 
-class UserDefaultsPropertyWrapperTests: XCTestCase, ClassIdentifiable {
+class UserDefaultsPropertyWrapperTests: XCTestCase {
     // MARK: - Data
     private var userDefaultsMock: UserDefaults!
-    private let key = UserDefaultsKey(UserDefaultsPropertyWrapperTests.classIdentifier)
+    private let key = UserDefaultsKey(UserDefaultsPropertyWrapperTests.className)
     
     // MARK: - Overrides
     override func setUpWithError() throws {

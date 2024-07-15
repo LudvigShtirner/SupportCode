@@ -19,4 +19,6 @@ public extension CGFloat {
         let rounded = pixels.rounded()
         return rounded / scale
     }
+    
+    static var pixelSize: CGFloat { 1.0 / UIScreen.main.scale }
 }

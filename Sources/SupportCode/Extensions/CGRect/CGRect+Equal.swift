@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension CGRect {
+public extension CGRect {
     func isAlmostEqual(to other: CGRect) -> Bool {
         size.isAlmostEqual(to: other.size) 
         && origin.isAlmostEqual(to: other.origin)
