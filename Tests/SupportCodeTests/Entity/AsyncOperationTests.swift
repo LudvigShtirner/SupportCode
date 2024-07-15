@@ -9,6 +9,7 @@
 import SupportCode
 // Apple
 import XCTest
+import Combine
 
 final class AsyncOperationTests: XCTestCase {
     // MARK: - Data
@@ -65,8 +66,9 @@ final class AsyncOperationTests: XCTestCase {
     // MARK: - Subtypes
     final class ExampleAsyncOperation: AsyncOperation {
         // MARK: - Data
-        private let progressTimer = ProgressTimer(updateStep: 0.05, finishTime: 1)
+        private let progressTimer = ProgressTimer()
         private let completion: VoidBlock
+        private var cancellables = Set<AnyCancellable>()
         
         // MARK: - Inits
         init(completion: @escaping VoidBlock) {
@@ -75,11 +77,16 @@ final class AsyncOperationTests: XCTestCase {
         
         // MARK: - AsyncOperation
         override func main() {
-            progressTimer.configureAndStart { [weak self] progress in
-                if progress >= 1.0 {
-                    self?.completion()
-                    self?.completeOperation()
+            progressTimer.start(updateStep: 0.05,
+                                finishTime: 1) { [weak self] notifier in
+                guard let self else { return }
+                notifier.sink { [weak self] progress in
+                    if progress.isAlmostEqual(to: 1, error: 0.001) {
+                        self?.completion()
+                        self?.completeOperation()
+                    }
                 }
+                .store(in: &cancellables)
             }
         }
     }
