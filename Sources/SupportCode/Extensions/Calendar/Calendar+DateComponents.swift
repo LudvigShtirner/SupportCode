@@ -34,9 +34,9 @@ public extension Calendar {
     /// Получить день в году из даты
     /// - Parameter date: Указанная дата
     /// - Returns: День в году из указанной даты. Если передать nil, то вернет текущий день в году
-    func getDayOfYear(from date: Date? = nil) -> Int {
+    func getDayOfYear(from date: Date? = nil) -> Int? {
         let d = date ?? Date()
-        return ordinality(of: .day, in: .year, for: d) ?? .min
+        return ordinality(of: .day, in: .year, for: d)
     }
     
     /// Получить компонент из даты

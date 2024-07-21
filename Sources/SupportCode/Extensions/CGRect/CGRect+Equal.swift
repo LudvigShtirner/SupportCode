@@ -5,6 +5,7 @@
 //  Created by Алексей Филиппов on 24.04.2024.
 //
 
+// Apple
 import Foundation
 
 public extension CGRect {

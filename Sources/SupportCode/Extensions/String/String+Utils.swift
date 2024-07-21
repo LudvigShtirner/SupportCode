@@ -29,7 +29,7 @@ public extension String {
         if length == 0 {
             return ""
         }
-        return self[min(fromIndex, length - 1) ..< length]
+        return self[min(fromIndex, length) ..< length]
     }
     
     /// Create substring from start to index

@@ -35,6 +35,8 @@ class AtomicTests: XCTestCase {
 
         // Then
         XCTAssertEqual(intValue, 100)
+        intValue = 0
+        XCTAssertEqual(intValue, 100)
     }
     
     func testThatDictIsAtomic() {

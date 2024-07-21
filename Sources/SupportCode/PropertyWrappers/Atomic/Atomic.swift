@@ -29,9 +29,7 @@ public final class Atomic<Value> {
             lock.unlock()
             return result
         }
-        set {
-            assertionFailure("Use mutate instead")
-        }
+        set { }
     }
     
     public func mutate(_ mutation: (inout Value) -> Void) {

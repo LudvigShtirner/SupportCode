@@ -16,38 +16,28 @@ public extension Date {
     }
     
     /// Создать дату с последней секундой дня
-    func createWithLastSecondsOfDay() -> Date {
+    func createWithLastSecondsOfDay(calendar: Calendar = .current) -> Date? {
         var components = DateComponents()
         components.day = 1
-        components.nanosecond = -1
+        components.second = -1
         let startOfDay = createWithFirstSecondsOfDay()
-        guard let modified = Calendar.current.date(byAdding: components, to: startOfDay) else {
-            assertionFailure("Cannot create date by adding components when calculating last seconds of date")
-            return Date(timeIntervalSince1970: TimeInterval.zero)
-        }
-        return modified
+        return calendar.date(byAdding: components, to: startOfDay)
     }
     
     /// Создать дату первого дня месяца
-    func createWithFirstDayOfMonth() -> Date {
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+    func createWithFirstDayOfMonth(calendar: Calendar = .current) -> Date? {
         let components = calendar.dateComponents([Calendar.Component.year, Calendar.Component.month], from: self)
-        guard let startOfMonth = calendar.date(from: components) else {
-            assertionFailure("Cannot create date from month and year component")
-            return Date(timeIntervalSince1970: TimeInterval.zero)
-        }
-        return startOfMonth
+        return calendar.date(from: components)
     }
     
     /// Создать дату последнего дня месяца
-    func createWithLastDayOfMonth() -> Date {
+    func createWithLastDayOfMonth(calendar: Calendar = .current) -> Date? {
         var components = DateComponents()
         components.month = 1
-        components.nanosecond = -1
-        guard let modified = Calendar(identifier: Calendar.Identifier.gregorian).date(byAdding: components, to: createWithFirstDayOfMonth()) else {
-            assertionFailure("Cannot create date by adding components when calculating last day of date")
-            return Date(timeIntervalSince1970: TimeInterval.zero)
+        components.second = -1
+        return createWithFirstDayOfMonth().flatMap {
+            calendar.date(byAdding: components,
+                          to: $0)
         }
-        return modified
     }
 }

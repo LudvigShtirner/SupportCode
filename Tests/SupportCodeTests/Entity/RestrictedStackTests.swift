@@ -78,9 +78,52 @@ final class RestrictedStackTests: XCTestCase {
         XCTAssertEqual(ex.identifier, nextState?.identifier)
     }
     
+    func testThatRestrictedStackDoesNotObtainNextState() {
+        // Given
+        let array = [Example(), Example(), Example(), Example()]
+        var restrictedStack = RestrictedStack(stored: array, maxCount: 5)
+        // When
+        let nextState = restrictedStack.obtainNextState()
+        // Then
+        XCTAssertNil(nextState)
+    }
+    
+    func testThatRestrictedStackAddStateClearsRedoActions() {
+        // Given
+        let array = [Example(), Example(), Example(), Example()]
+        var restrictedStack = RestrictedStack(stored: array, maxCount: 5)
+        _ = restrictedStack.obtainPreviousState()
+        _ = restrictedStack.obtainPreviousState()
+        // When
+        XCTAssertTrue(restrictedStack.hasNextState)
+        restrictedStack.addState(Example())
+        // Then
+        XCTAssertFalse(restrictedStack.hasNextState)
+    }
+    
+    func testThatRestrictedStackAddStateRemovesFirst() {
+        // Given
+        let array = [Example(), Example(), Example(), Example(), Example()]
+        var restrictedStack = RestrictedStack(stored: array, maxCount: 5)
+        let count = restrictedStack.storage.count
+        // When
+        restrictedStack.addState(Example())
+        // Then
+        XCTAssertEqual(count, restrictedStack.storage.count)
+    }
+    
+    func testThatRestrictedStackRemoveAllStatesClearsAll() {
+        // Given
+        let array = [Example(), Example(), Example(), Example(), Example()]
+        var restrictedStack = RestrictedStack(stored: array, maxCount: 5)
+        // When
+        restrictedStack.removeAllStates()
+        // Then
+        XCTAssertEqual(0, restrictedStack.storage.count)
+    }
+    
     // MARK: - Subtypes
     struct Example {
         let identifier = UUID().uuidString
-        
     }
 }

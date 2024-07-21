@@ -21,13 +21,12 @@ public final class ProgressTimer {
     
     // MARK: - Interface methods
     public var isActive: Bool {
-        guard state.isActive else { return false }
-        return true
+        state.isActive
     }
     
     public func start(updateStep: TimeInterval,
                       finishTime: TimeInterval,
-                      handle: @escaping (CurrentValueSubject<Double, Never>) -> Void) {
+                      handle: (CurrentValueSubject<Double, Never>) -> Void) {
         guard let idle = state.idle else {
             return
         }

@@ -68,7 +68,7 @@ public struct RestrictedStack<T> {
         currentIndex += 1
     }
     
-    mutating func removeAllStates() {
+    mutating public func removeAllStates() {
         storage.removeAll()
         currentIndex = -1
     }
@@ -84,7 +84,7 @@ public struct RestrictedStack<T> {
     
     /// Удалить первое сохраненное состояние, если хранилище полностью заполнено
     private mutating func removeFirstStateIfNeeded() {
-        if storage.count <= maxCount {
+        if storage.count < maxCount {
             return
         }
         storage.removeFirst()
