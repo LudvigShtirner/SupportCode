@@ -39,9 +39,7 @@ final class AsyncOperationTests: XCTestCase {
     func testThatAsyncOperationCancelled() {
         // Given
         cancelExpectation = XCTestExpectation()
-        let operation = ExampleAsyncOperation(completion: {
-            
-        })
+        let operation = ExampleAsyncOperation(completion: nil)
         operation.addObserver(self, forKeyPath: "isFinished", context: nil)
         // When
         operation.cancel()
@@ -55,9 +53,7 @@ final class AsyncOperationTests: XCTestCase {
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-        guard let operation = object as? ExampleAsyncOperation else {
-            return
-        }
+        let operation = object as! ExampleAsyncOperation
         if operation.isFinished && operation.isCancelled {
             cancelExpectation?.fulfill()
         }
@@ -67,11 +63,11 @@ final class AsyncOperationTests: XCTestCase {
     final class ExampleAsyncOperation: AsyncOperation {
         // MARK: - Data
         private let progressTimer = ProgressTimer()
-        private let completion: VoidBlock
+        private let completion: VoidBlock?
         private var cancellables = Set<AnyCancellable>()
         
         // MARK: - Inits
-        init(completion: @escaping VoidBlock) {
+        init(completion: VoidBlock?) {
             self.completion = completion
         }
         
@@ -79,14 +75,13 @@ final class AsyncOperationTests: XCTestCase {
         override func main() {
             progressTimer.start(updateStep: 0.05,
                                 finishTime: 1) { [weak self] notifier in
-                guard let self else { return }
-                notifier.sink { [weak self] progress in
+                notifier.sink { progress in
                     if progress.isAlmostEqual(to: 1, error: 0.001) {
-                        self?.completion()
+                        self?.completion?()
                         self?.completeOperation()
                     }
                 }
-                .store(in: &cancellables)
+                .store(in: &self!.cancellables)
             }
         }
     }

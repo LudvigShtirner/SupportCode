@@ -134,6 +134,15 @@ class CGSizeMathTests: XCTestCase {
         XCTAssertEqual(maxResult, maximumSide)
     }
     
+    func testThatAbsCorrectly() {
+        // Given
+        let size = CGSize(width: -10, height: -5)
+        // When
+        let result = size.abs
+        // Then
+        XCTAssertTrue(result.isAlmostEqual(to: CGSize(width: 10, height: 5)))
+    }
+    
     // MARK: - Private methods
     private func testSizeInsideWithAspectRatio(_ aspectRatio: CGFloat) {
         // Given

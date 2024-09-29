@@ -35,6 +35,13 @@ final class LocalizationResourceTests: XCTestCase {
         // Then
         XCTAssertEqual(result, "NO_LOCALIZATION")
     }
+    
+    func test_defaultSpecificTable_nameEqualClass() {
+        let commonData = Environment.commonTable
+        let tableData = Environment.specificTable
+        XCTAssertEqual(commonData.tableName, "TestLocalizable")
+        XCTAssertEqual(tableData.tableName, "Environment")
+    }
 }
 
 // MARK: - Stubs
@@ -50,6 +57,12 @@ fileprivate class ExampleLocalization: LocalizationResource {
         return (Bundle.module, "ExampleLocalization")
     }
     
+    static var commonTable: (bundle: Bundle, tableName: String) {
+        return (Bundle.module, "TestLocalizable")
+    }
+}
+
+private final class Environment: LocalizationResource {
     static var commonTable: (bundle: Bundle, tableName: String) {
         return (Bundle.module, "TestLocalizable")
     }
