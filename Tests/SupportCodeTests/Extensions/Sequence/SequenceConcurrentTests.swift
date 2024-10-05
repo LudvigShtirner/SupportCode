@@ -15,7 +15,7 @@ final class SequenceConcurrentTests: XCTestCase {
         let array = [1, 2, 3, 4, 5]
         let expected = [2, 4, 6, 8, 10]
         let expectation = XCTestExpectation(description: #function)
-        var result = Result()
+        let result = Result()
         // When
         Task { [result] in
             result.array = await array.asyncMap { $0 * 2 }
@@ -31,7 +31,7 @@ final class SequenceConcurrentTests: XCTestCase {
         let array = [1, 2, 3, 4, 5]
         let expected = [2, 4, 6, 8, 10]
         let expectation = XCTestExpectation(description: #function)
-        var result = Result()
+        let result = Result()
         // When
         Task { [result] in
             result.array = await array.concurrentMap { $0 * 2 }
