@@ -76,7 +76,7 @@ public struct UDStoredRx<T: Codable> {
     }
     
     public var projectedValue: Self { self }
-    public var publisher: AnyPublisher<T, Never> { currentValue.eraseToAnyPublisher() }
+    public var publisher: CurrentValueSubject<T, Never> { currentValue }
     
     private let key: UserDefaultsKey
     private let defaultValue: T

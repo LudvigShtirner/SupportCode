@@ -59,4 +59,3 @@ class AtomicTests: XCTestCase {
         XCTAssertEqual(dictValue.count, 100)
     }
 }
-

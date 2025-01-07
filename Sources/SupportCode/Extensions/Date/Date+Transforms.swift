@@ -40,4 +40,8 @@ public extension Date {
                           to: $0)
         }
     }
+    
+    func monthIndex(calendar: Calendar = .current) -> Int {
+        calendar.component(.month, from: self)
+    }
 }
